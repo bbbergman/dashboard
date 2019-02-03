@@ -1,0 +1,102 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <h5 class="title"><span class="number">1</span> Select Blackboxes</h5>
+      <div id="frame2">
+        <div>
+        <h6 class="groupTitle">
+          <label class="glyphicon glyphicon-arrow-down" data-toggle="collapse"
+                 data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></label>
+          <input class="groups" type="checkbox" [checked]="deviceGroupsArray[0].groupAllActive" (click)="groupSelected(0)">&nbsp;group 1</h6>
+        <div id="collapseOne" aria-expanded="false" class="collapse in">
+          <div *ngFor="let device1 of deviceGroup1; let i = index">
+            <h6><input type="checkbox" [checked]="device1.active" (click)="checkboxClicked(0,i)">&nbsp;{{device1.name}}</h6>
+          </div>
+        </div>
+        </div>
+        <div>
+        <h6 class="groupTitle">
+          <label class="glyphicon glyphicon-arrow-down" data-toggle="collapse"
+                 data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></label>
+          <input class="groups" type="checkbox" [checked]="deviceGroupsArray[1].groupAllActive" (click)="groupSelected(1)">&nbsp;group 2</h6>
+        <div id="collapseTwo" aria-expanded="false" class="collapse in">
+          <div *ngFor="let device2 of deviceGroup2; let i = index">
+            <h6>&emsp; <input type="checkbox" [checked]="device2.active" (click)="checkboxClicked(1,i)">&nbsp;{{device2.name}}</h6>
+          </div>
+        </div>
+        </div>
+        <div>
+        <h6 class="groupTitle">
+          <label class="glyphicon glyphicon-arrow-down" data-toggle="collapse"
+                 data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"></label>
+          <input class="groups" type="checkbox" [checked]="deviceGroupsArray[2].groupAllActive" (click)="groupSelected(2)">&nbsp;group 3</h6>
+        <div id="collapseThree" aria-expanded="false" class="collapse in">
+          <div *ngFor="let device3 of deviceGroup3; let i = index">
+            <h6>&emsp; <input type="checkbox" [checked]="device3.active" (click)="checkboxClicked(2,i)">&nbsp;{{device3.name}}</h6>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <h5 class="title"><span class="number">2</span> Select Protocols</h5>
+      <div class="options">
+        <div *ngFor="let protocol of protocols; let i = index">
+          <h6>  <input type="checkbox" [checked]="protocol.active" (click)="protocolClicked(i)" >{{protocol.name}}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <h5 class="title"><span class="number">3</span> Select Time Period</h5>
+      <div class="options">
+        <div *ngFor="let time of times; let i = index">
+          <h6><input type="radio" (click)="timeChecked(i)" name="selection">{{time.name}}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <h5 class="title">Summary</h5>
+      <div id="frame">
+        <div *ngIf="deviceChosen;else deviceStart">
+          <span class="numberSummary">1</span>
+          <div *ngFor="let device1 of deviceGroup1">
+            <div *ngIf="device1.active">
+              <h6>&emsp;{{device1.name}}</h6>
+            </div>
+          </div>
+          <br>
+          <div *ngFor="let device2 of deviceGroup2">
+            <div *ngIf="device2.active">
+              <h6>&emsp;{{device2.name}}</h6>
+            </div>
+          </div>
+          <br>
+          <div *ngFor="let device3 of deviceGroup3">
+            <div *ngIf="device3.active">
+              <h6>&emsp;{{device3.name}}</h6>
+            </div>
+          </div>
+        </div>
+        <ng-template #deviceStart><p class="select"><span class="numberSummary">1</span>&emsp;-Select Device-</p></ng-template>
+        <hr>
+        <div *ngIf="protocolChosen;else protocolStart">
+          <span class="numberSummary">2</span>
+          <div *ngFor="let protocol of protocols">
+            <div *ngIf="protocol.active">
+              <h6>&emsp;{{protocol.name}}</h6>
+            </div>
+          </div>
+        </div>
+        <ng-template #protocolStart><p class="select">  <span class="numberSummary">2</span>&emsp;-Select Protocol-</p></ng-template>
+        <hr>
+        <div *ngIf="timeChosen;else timeStart">
+          <h6><span class="numberSummary">3</span>&emsp;{{selectedTime.name}}</h6>
+        </div>
+        <ng-template #timeStart><p class="select">  <span class="numberSummary">3</span>&emsp;-Select Time-</p></ng-template>
+        <hr>
+        <a (click)="clear()">clear</a> <button (click)="submit()" id=submitButton><span class="glyphicon glyphicon-play"></span>&emsp;Start Learning</button>
+      </div>
+    </div>
+  </div>
+</div>
+

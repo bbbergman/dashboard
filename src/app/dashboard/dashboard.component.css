@@ -1,0 +1,47 @@
+#submitButton {
+  width:135px;
+  height: 35px;
+  margin-left: 30px;
+  background-color: #1e428b;
+  color: white;
+  text-align: left;
+}
+#frame{
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+#frame2{
+  border: 1px solid lightgray;
+}
+.select{
+  color: lightgray;
+  font-style: italic;
+}
+h6{
+  color: #1e428b;
+}
+.options{
+  background-color: lightsteelblue;
+}
+.title{
+  color: #1e428b;
+}
+.number{
+  font-size: large;
+  font-weight: bold;
+}
+.numberSummary{
+  font-size: large;
+  font-weight: bold;
+  color: lightgray;
+}
+.groups{
+  margin-left: 5px;
+}
+.groupTitle{
+  background-color: midnightblue;
+  color:white;
+  padding: 5px;
+}
+
+
